@@ -28,3 +28,12 @@
 .quaternary-color {
   color: #f46cac;
 }
+
+.router-link-active {
+  border-bottom: 2px solid white;
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
