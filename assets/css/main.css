@@ -6,3 +6,25 @@
     font-family: "Montserrat", sans-serif;
   }
 }
+.bold {
+  font-weight: 700;
+  font-size: 49px;
+  line-height: 53.9px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.primary-color {
+  color: #2c144c;
+}
+
+.secondary-color {
+  color: #6c4bb2;
+}
+
+.tertiary-color {
+  color: #ec3494;
+}
+
+.quaternary-color {
+  color: #f46cac;
+}
