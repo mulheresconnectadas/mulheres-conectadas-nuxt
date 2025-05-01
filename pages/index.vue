@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h1>INDEX</h1>
+  <div class="bg-white flex flex-col items-center justify-center">
+    <IndexHeroSection />
   </div>
 </template>
 
 <script setup lang="ts">
-
 definePageMeta({
   layout: "default",
 });
