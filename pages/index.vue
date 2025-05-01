@@ -2,6 +2,7 @@
   <div class="bg-white flex flex-col space-y-10 items-center justify-center">
     <IndexHeroSection />
     <IndexStats />
+    <IndexFrameVideo />
   </div>
 </template>
 
