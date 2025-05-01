@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-white flex flex-col items-center justify-center">
+  <div class="bg-white flex flex-col space-y-10 items-center justify-center">
     <IndexHeroSection />
+    <IndexStats />
   </div>
 </template>
 
