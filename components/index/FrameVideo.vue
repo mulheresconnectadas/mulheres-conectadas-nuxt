@@ -16,7 +16,7 @@
     <div class="flex-1 flex justify-center items-center h-full p-8">
       <div class="flex flex-col items-center gap-8">
         <img
-          src="/LOGO.png"
+          src="/logo.png"
           alt="Logo Mulheres Conectadas"
           class="w-[200px] h-auto"
         />
