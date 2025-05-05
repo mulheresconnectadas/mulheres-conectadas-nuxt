@@ -3,6 +3,7 @@
     <IndexHeroSection />
     <IndexStats />
     <IndexFrameVideo />
+    <IndexSolutions />
   </div>
 </template>
 
