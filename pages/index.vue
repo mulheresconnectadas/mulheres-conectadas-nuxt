@@ -4,6 +4,7 @@
     <IndexStats />
     <IndexFrameVideo />
     <IndexSolutions />
+    <IndexNews />
   </div>
 </template>
 
