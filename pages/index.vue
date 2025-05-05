@@ -5,6 +5,7 @@
     <IndexFrameVideo />
     <IndexSolutions />
     <IndexNews />
+    <IndexLocation />
   </div>
 </template>
 
