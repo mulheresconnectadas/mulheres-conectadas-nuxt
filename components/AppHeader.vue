@@ -1,5 +1,7 @@
 <template>
-  <header class="bg-gradient-to-r from-[#6C4BB2] to-[#EE3792] shadow-md">
+  <header
+    class="bg-gradient-to-r from-[#6C4BB2] to-[#EE3792] shadow-md sticky top-0 z-50"
+  >
     <div class="mx-auto px-20 py-6 flex justify-between items-center">
       <NuxtLink
         to="/"
