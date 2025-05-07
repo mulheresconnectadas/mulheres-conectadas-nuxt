@@ -1,8 +1,33 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+
+const isAtTop = ref(true);
+
+function handleScroll() {
+  isAtTop.value = window.scrollY === 0;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+</script>
+
 <template>
   <header
-    class="bg-gradient-to-r from-[#6C4BB2] to-[#EE3792] shadow-md sticky top-0 z-50"
+    :class="[
+      'bg-gradient-to-r from-[#6C4BB2] to-[#EE3792] shadow-md sticky top-0 z-50 transition-all duration-300',
+      !isAtTop ? 'py-2' : 'py-6',
+    ]"
   >
-    <div class="mx-auto px-20 py-6 flex justify-between items-center">
+    <div
+      :class="[
+        'mx-auto px-4 flex justify-between items-center transition-all duration-300',
+        !isAtTop ? 'max-w-5xl' : 'max-w-7xl',
+      ]"
+    >
       <NuxtLink
         to="/"
         class="flex items-center space-x-4"
@@ -65,5 +90,3 @@
     </div>
   </header>
 </template>
-
-<script setup></script>
