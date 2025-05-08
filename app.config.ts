@@ -5,6 +5,7 @@ export default defineAppConfig({
       primary: "primary",
       secondary: "secondary",
       tertiary: "tertiary",
+      error: "error",
     },
   },
 });

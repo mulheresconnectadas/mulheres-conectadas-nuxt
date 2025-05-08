@@ -43,6 +43,18 @@
   --color-tertiary-800: #5d0834;
   --color-tertiary-900: #2e041a;
   --color-tertiary-950: #17020d;
+
+  --color-error-50: #fde7e7;
+  --color-error-100: #fbd1d1;
+  --color-error-200: #f8a2a2;
+  --color-error-300: #f47373;
+  --color-error-400: #f14444;
+  --color-error-500: #ed1515;
+  --color-error-600: #ba1111;
+  --color-error-700: #8b0d0d;
+  --color-error-800: #5d0808;
+  --color-error-900: #2e0404;
+  --color-error-950: #170202;
 }
 
 .bold {
