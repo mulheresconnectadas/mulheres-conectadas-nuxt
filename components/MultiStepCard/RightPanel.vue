@@ -7,7 +7,7 @@
         :form="form"
         @next="emit('next')"
         @prev="emit('prev')"
-        @update:form="(field: keyof FormData, value: string) => emit('update:form', field, value)"
+        @update:form="(field: keyof IFormulario, value: string) => emit('update:form', field, value)"
       />
     </transition>
   </div>
@@ -15,26 +15,16 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import type { IFormulario } from "@/types/form";
 import Step1Welcome from "./RightSteps/Step1Welcome.vue";
 import Step2Form from "./RightSteps/Step2Form.vue";
 import Step3Form from "./RightSteps/Step3Form.vue";
 import Step4Form from "./RightSteps/Step4Form.vue";
 
-interface FormData {
-  name: string;
-  email: string;
-  birth: string;
-  presencial: string;
-  phone: string;
-  social: string;
-  lgpd: string;
-  lgpdTexto: string;
-}
-
-const props = defineProps<{ step: number; form: FormData }>();
+const props = defineProps<{ step: number; form: IFormulario }>();
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
-  (e: "update:form", field: keyof FormData, value: string): void;
+  (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 const rightComponent = computed(() => {
