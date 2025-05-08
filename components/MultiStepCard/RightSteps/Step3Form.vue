@@ -3,8 +3,8 @@
   <form class="space-y-4" @submit.prevent="emit('next')">
     <!-- Número de contato -->
     <UInput
+      v-model="props.form.phone"
       type="tel"
-      :model-value="props.form.phone"
       placeholder="Número de contato:"
       class="w-full"
       required
@@ -13,8 +13,8 @@
 
     <!-- Situação atual no mercado de trabalho -->
     <USelect
+      v-model="props.form.situacao"
       :items="situacaoOptions"
-      :model-value="props.form.situacao"
       placeholder="Qual é sua situação atual no mercado de trabalho?"
       class="w-full"
       required
@@ -25,8 +25,8 @@
 
     <!-- Rede social -->
     <UInput
+      v-model="props.form.social"
       type="text"
-      :model-value="props.form.social"
       placeholder="Insira a sua rede social (Instagram/Linkedin/Tiktok):"
       class="w-full"
       required
@@ -35,8 +35,8 @@
 
     <!-- Cidade onde mora -->
     <USelect
+      v-model="props.form.cidade"
       :items="cidadeOptions"
-      :model-value="props.form.cidade"
       placeholder="Cidade onde mora"
       class="w-full"
       required
@@ -46,19 +46,16 @@
     />
 
     <!-- Participação presencial -->
-    <div class="bg-purple-100 p-3 rounded space-y-2">
+    <div class="space-y-2">
       <p class="text-[#2C144C] font-medium">
         Você deseja participar de forma presencial?
       </p>
+
       <URadioGroup
-        :model-value="props.form.presencial"
-        class="flex flex-col space-y-1"
+        v-model="props.form.presencial"
+        :items="presencialOptions"
         @update:model-value="(val) => emit('update:form', 'presencial', val)"
-      >
-        <URadio label="Sim" value="sim" />
-        <URadio label="Não" value="nao" />
-        <URadio label="Talvez" value="talvez" />
-      </URadioGroup>
+      />
     </div>
 
     <!-- Botões -->
@@ -79,6 +76,8 @@
 </template>
 
 <script setup lang="ts">
+import type { RadioGroupItem } from "@nuxt/ui";
+import { ref } from "vue";
 interface FormData {
   name: string;
   email: string;
@@ -112,4 +111,10 @@ const cidadeOptions = [
   { label: "Arapiraca", value: "arapiraca" },
   { label: "Outra...", value: "outra" },
 ];
+
+const presencialOptions = ref<RadioGroupItem[]>([
+  { label: "Sim", value: "sim" },
+  { label: "Não", value: "nao" },
+  { label: "Talvez", value: "talvez" },
+]);
 </script>
