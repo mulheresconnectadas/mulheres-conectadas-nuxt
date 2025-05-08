@@ -10,14 +10,12 @@
 import { computed } from "vue";
 import Step1Intro from "./LeftSteps/Step1Intro.vue";
 import Step2to4Visual from "./LeftSteps/Step2to4Visual.vue";
-import Step5Thanks from "./LeftSteps/Step5Thanks.vue";
 
 const props = defineProps<{ step: number }>();
 
 const leftComponent = computed(() => {
   if (props.step === 1) return Step1Intro;
-  if (props.step > 1 && props.step < 5) return Step2to4Visual;
-  return Step5Thanks;
+  return Step2to4Visual;
 });
 </script>
 
