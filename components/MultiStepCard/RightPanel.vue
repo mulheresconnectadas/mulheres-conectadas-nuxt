@@ -1,5 +1,5 @@
 <template>
-  <div class="md:w-1/2 bg-white p-8 rounded-r-md h-full">
+  <div class="md:w-1/2 bg-white p-8 rounded-r-md flex flex-col">
     <transition name="fade" mode="out-in">
       <component
         :is="rightComponent"
