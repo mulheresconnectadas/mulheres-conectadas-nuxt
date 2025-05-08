@@ -3,39 +3,39 @@
   <form class="space-y-4" @submit.prevent="emit('next')">
     <!-- Número de contato -->
     <UInput
-      v-model="props.form.phone"
+      v-model="form.contato"
       type="tel"
       placeholder="Número de contato:"
       class="w-full"
       required
-      @update:model-value="(val) => emit('update:form', 'phone', val)"
+      @update:model-value="(val) => emit('update:form', 'contato', val)"
     />
 
     <!-- Situação atual no mercado de trabalho -->
     <USelect
-      v-model="props.form.situacao"
+      v-model="form.situacao_trabalho"
       :items="situacaoOptions"
       placeholder="Qual é sua situação atual no mercado de trabalho?"
       class="w-full"
       required
       @update:model-value="
-        (val) => emit('update:form', 'situacao', String(val ?? ''))
+        (val) => emit('update:form', 'situacao_trabalho', String(val ?? ''))
       "
     />
 
     <!-- Rede social -->
     <UInput
-      v-model="props.form.social"
+      v-model="form.rede_social"
       type="text"
       placeholder="Insira a sua rede social (Instagram/Linkedin/Tiktok):"
       class="w-full"
       required
-      @update:model-value="(val) => emit('update:form', 'social', val)"
+      @update:model-value="(val) => emit('update:form', 'rede_social', val)"
     />
 
     <!-- Cidade onde mora -->
     <USelect
-      v-model="props.form.cidade"
+      v-model="form.cidade"
       :items="cidadeOptions"
       placeholder="Cidade onde mora"
       class="w-full"
@@ -52,9 +52,11 @@
       </p>
 
       <URadioGroup
-        v-model="props.form.presencial"
+        v-model="form.deseja_participar_presencial"
         :items="presencialOptions"
-        @update:model-value="(val) => emit('update:form', 'presencial', val)"
+        @update:model-value="
+          (val) => emit('update:form', 'deseja_participar_presencial', val)
+        "
       />
     </div>
 
@@ -80,24 +82,13 @@
 
 <script setup lang="ts">
 import type { RadioGroupItem } from "@nuxt/ui";
-import { ref } from "vue";
-interface FormData {
-  name: string;
-  email: string;
-  birth: string;
-  situacao: string;
-  phone: string;
-  social: string;
-  cidade: string;
-  presencial: string;
-  lgpd: string;
-  lgpdTexto: string;
-}
+import type { IFormulario } from "@/types/form";
+import { useForm } from "@/composables/useForm";
+const { form } = useForm();
 
-const props = defineProps<{ form: FormData }>();
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
-  (e: "update:form", field: keyof FormData, value: string): void;
+  (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 const situacaoOptions = [
