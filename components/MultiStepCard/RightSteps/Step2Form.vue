@@ -3,18 +3,18 @@
   <form class="space-y-10" @submit.prevent="emit('next')">
     <!-- Nome -->
     <UInput
+      v-model="form.nome"
       type="text"
-      :model-value="props.form.name"
       placeholder="Nome:"
       class="w-full"
       required
-      @update:model-value="(val) => emit('update:form', 'name', val)"
+      @update:model-value="(val) => emit('update:form', 'nome', val)"
     />
 
     <!-- E-mail -->
     <UInput
+      v-model="form.email"
       type="email"
-      :model-value="props.form.email"
       placeholder="E-mail:"
       class="w-full"
       required
@@ -23,34 +23,34 @@
 
     <!-- Data de nascimento -->
     <UInput
+      v-model="form.data_nascimento"
       type="date"
-      :model-value="props.form.birth"
       placeholder="Data de nascimento:"
       class="w-full"
       required
-      @update:model-value="(val) => emit('update:form', 'birth', val)"
+      @update:model-value="(val) => emit('update:form', 'data_nascimento', val)"
     />
 
     <!-- Gênero -->
     <USelect
+      v-model="form.genero"
       :items="generoOptions"
-      :model-value="props.form.genero"
       placeholder="Como você se identifica em relação ao gênero?"
       class="w-full"
     />
 
     <!-- Etnia -->
     <USelect
+      v-model="form.etnia"
       :items="etniaOptions"
-      :model-value="props.form.etnia"
       placeholder="Etnia"
       class="w-full"
     />
 
     <!-- Escolaridade -->
     <USelect
+      v-model="form.escolaridade"
       :items="escolaridadeOptions"
-      :model-value="props.form.escolaridade"
       placeholder="Escolaridade"
       class="w-full"
     />
@@ -76,20 +76,13 @@
 </template>
 
 <script setup lang="ts">
-interface FormData {
-  name: string;
-  email: string;
-  birth: string;
-  genero: string;
-  etnia: string;
-  escolaridade: string;
-}
-
-const props = defineProps<{ form: FormData }>();
+import type { IFormulario } from "@/types/form";
+import { useForm } from "@/composables/useForm";
+const { form } = useForm();
 
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
-  (e: "update:form", field: keyof FormData, value: string): void;
+  (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 const generoOptions = [
