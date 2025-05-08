@@ -1,51 +1,52 @@
 <template>
   <form class="space-y-4" @submit.prevent="emit('next')">
     <!-- Campos Etapa 4 -->
-    <details open class="bg-purple-100 p-3 rounded">
-      <summary>Como você ficou sabendo do Programa?</summary>
-      <ul class="mt-2 list-disc list-inside">
-        <li>Instagram</li>
-        <li>LinkedIn</li>
-        <li>WhatsApp</li>
-        <li>TV</li>
-        <li>Outros</li>
-      </ul>
-    </details>
+    <div class="space-y-2">
+      <p class="text-[#2C144C] font-medium">
+        Como você ficou sabendo do Programa Mulheres Conectadas: Empoderamento
+        Digital no Semiárido?
+      </p>
+
+      <URadioGroup
+        v-model="props.form.sabendo"
+        :items="sabendoOptions"
+        @update:model-value="(val) => emit('update:form', 'sabendo', val)"
+      />
+    </div>
     <!-- LGPD -->
-    <fieldset class="bg-purple-100 p-3 rounded space-y-1">
+    <fieldset class="space-y-1">
       <legend class="font-medium">
         Você concorda com a utilização de seus dados (LGPD)?
       </legend>
-      <label class="flex items-center space-x-2">
-        <input
-          type="radio"
-          value="sim"
-          :checked="props.form.lgpd === 'sim'"
-          @change="emit('update:form', 'lgpd', 'sim')"
-        />
-        <span>Sim, concordo.</span>
-      </label>
-      <label class="flex items-center space-x-2">
-        <input
-          type="radio"
-          value="outro"
-          :checked="props.form.lgpd === 'outro'"
-          @change="emit('update:form', 'lgpd', 'outro')"
-        />
-        <span>Não, concordo.</span>
-      </label>
+      <URadioGroup
+        v-model="props.form.lgpd"
+        :items="lgpdOptions"
+        @update:model-value="(val) => emit('update:form', 'lgpd', val)"
+      />
     </fieldset>
-    <!-- ... outros detalhes -->
-    <div class="flex justify-between mt-6">
-      <button type="button" class="bg-gray-200 ..." @click="emit('prev')">
+
+    <!-- Botões -->
+    <div class="flex justify-evenly mt-6">
+      <UButton
+        type="button"
+        class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
+        @click="emit('prev')"
+      >
         VOLTAR
-      </button>
-      <button type="submit" class="bg-pink-500 ...">PRÓXIMO PASSO</button>
+      </UButton>
+      <UButton
+        type="button"
+        class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
+        @click="emit('next')"
+      >
+        Finalizar Inscrição
+      </UButton>
     </div>
   </form>
 </template>
 
 <script setup lang="ts">
+import type { RadioGroupItem } from "@nuxt/ui";
 interface FormData {
   name: string;
   email: string;
@@ -62,4 +63,16 @@ const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof FormData, value: string): void;
 }>();
+
+const lgpdOptions = ref<RadioGroupItem[]>([
+  { label: "Sim", value: "sim" },
+  { label: "Não", value: "nao" },
+]);
+
+const sabendoOptions = ref<RadioGroupItem[]>([
+  { label: "Instagram", value: "instagram" },
+  { label: "LinkedIn", value: "linkedin" },
+  { label: "WhatsApp", value: "whatsapp" },
+  { label: "TV", value: "tv" },
+]);
 </script>
