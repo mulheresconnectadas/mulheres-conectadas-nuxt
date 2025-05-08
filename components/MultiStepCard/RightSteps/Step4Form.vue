@@ -8,9 +8,11 @@
       </p>
 
       <URadioGroup
-        v-model="props.form.sabendo"
+        v-model="form.como_sobre_programa"
         :items="sabendoOptions"
-        @update:model-value="(val) => emit('update:form', 'sabendo', val)"
+        @update:model-value="
+          (val) => emit('update:form', 'como_sobre_programa', val)
+        "
       />
     </div>
     <!-- LGPD -->
@@ -19,9 +21,11 @@
         Você concorda com a utilização de seus dados (LGPD)?
       </legend>
       <URadioGroup
-        v-model="props.form.lgpd"
+        v-model="form.autorizacao_lgpd"
         :items="lgpdOptions"
-        @update:model-value="(val) => emit('update:form', 'lgpd', val)"
+        @update:model-value="
+          (val) => emit('update:form', 'autorizacao_lgpd', val)
+        "
       />
     </fieldset>
 
@@ -37,7 +41,7 @@
       <UButton
         type="button"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
-        @click="emit('next')"
+        @click="submit"
       >
         Finalizar Inscrição
       </UButton>
@@ -47,21 +51,13 @@
 
 <script setup lang="ts">
 import type { RadioGroupItem } from "@nuxt/ui";
-interface FormData {
-  name: string;
-  email: string;
-  birth: string;
-  presencial: string;
-  phone: string;
-  social: string;
-  lgpd: string;
-  lgpdTexto: string;
-}
+import type { IFormulario } from "@/types/form";
+import { useForm } from "@/composables/useForm";
+const { submit, form } = useForm();
 
-const props = defineProps<{ form: FormData }>();
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
-  (e: "update:form", field: keyof FormData, value: string): void;
+  (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 const lgpdOptions = ref<RadioGroupItem[]>([
