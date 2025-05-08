@@ -19,10 +19,10 @@
         <ul
           class="list-disc list-inside text-base md:text-lg text-gray-700 ml-4"
         >
-          <li>ODS 5 – Igualdade de Gênero</li>
-          <li>ODS 8 – Trabalho Decente e Crescimento Econômico</li>
-          <li>ODS 10 – Redução das Desigualdades</li>
-          <li>ODS 11 – Cidades e Comunidades Sustentáveis</li>
+          <li>ODS 5 - Igualdade de Gênero</li>
+          <li>ODS 8 - Trabalho Decente e Crescimento Econômico</li>
+          <li>ODS 10 - Redução das Desigualdades</li>
+          <li>ODS 11 - Cidades e Comunidades Sustentáveis</li>
         </ul>
       </div>
       <div
