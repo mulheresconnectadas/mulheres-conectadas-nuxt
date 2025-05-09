@@ -81,7 +81,11 @@
     </UFormField>
 
     <!-- Escolaridade -->
-    <UFormField label="Escolaridade" xclass="w-full" :error="error['escolaridade']">
+    <UFormField
+      label="Escolaridade"
+      xclass="w-full"
+      :error="error['escolaridade']"
+    >
       <USelect
         v-model="form.escolaridade"
         :items="escolaridadeOptions"
@@ -124,8 +128,8 @@ const emit = defineEmits<{
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
-function next() {
-  const { valid } = validateStep2(form.value);
+async function next() {
+  const { valid } = await validateStep2(form.value);
   if (valid) {
     emit("next");
   } else {
@@ -140,8 +144,14 @@ function next() {
 const generoOptions = [
   { label: "Mulher cisgênera", value: "Mulher cisgenero" },
   { label: "Homem cisgênero", value: "Homem cisgenero" },
-  { label: "Mulher transexual/transgênera", value: "Mulher transexual/transgenero" },
-  { label: "Homem transexual/transgênero", value: "Homem transexual/transgenero" },
+  {
+    label: "Mulher transexual/transgênera",
+    value: "Mulher transexual/transgenero",
+  },
+  {
+    label: "Homem transexual/transgênero",
+    value: "Homem transexual/transgenero",
+  },
   { label: "Travesti", value: "Travesti" },
   { label: "Não binário", value: "Nao binario" },
   { label: "Prefiro não responder", value: "Prefiro nao responder" },
