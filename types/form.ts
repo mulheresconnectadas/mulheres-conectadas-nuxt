@@ -12,4 +12,4 @@ export interface IFormulario {
   deseja_participar_presencial: string;
   como_soube_programa: string;
   autorizacao_lgpd: string;
-} 
+}
