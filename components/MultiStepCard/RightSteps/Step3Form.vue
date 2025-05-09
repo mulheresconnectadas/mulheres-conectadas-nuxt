@@ -64,7 +64,7 @@
       :error="error['cidade']"
     >
       <USelectMenu
-        v-model="form.cidade"
+        v-model="selectedCity"
         :items="cities"
         placeholder="Cidade onde mora"
         class="w-full"
@@ -123,13 +123,16 @@ const { form } = useForm();
 const { validateStep3, error } = useValidateSteps();
 const toast = useToast();
 const { cities } = useAddress();
-
+const selectedCity = ref<{ value: number; label: string } | undefined>(
+  undefined
+);
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 function next() {
+  form.value.cidade = selectedCity.value?.label ?? "";
   const { valid } = validateStep3(form.value);
   if (valid) {
     emit("next");
