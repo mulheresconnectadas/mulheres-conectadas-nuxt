@@ -6,6 +6,7 @@
       <UInput
         v-model="form.contato"
         type="text"
+        maxlength="11"
         placeholder=""
         class="w-full"
         required
@@ -21,7 +22,11 @@
     </UFormField>
 
     <!-- Situação atual no mercado de trabalho -->
-    <UFormField class="w-full" :error="error['situacao_trabalho']">
+    <UFormField
+      label="Situação atual no mercado de trabalho"
+      class="w-full"
+      :error="error['situacao_trabalho']"
+    >
       <USelect
         v-model="form.situacao_trabalho"
         :items="situacaoOptions"
@@ -53,10 +58,14 @@
       </UInput>
     </UFormField>
     <!-- Cidade onde mora -->
-    <UFormField class="w-full" :error="error['cidade']">
-      <USelect
-        v-model="form.cidade"
-        :items="cidadeOptions"
+    <UFormField
+      label="Cidade onde mora"
+      class="w-full"
+      :error="error['cidade']"
+    >
+      <USelectMenu
+        v-model="selectedCity"
+        :items="cities"
         placeholder="Cidade onde mora"
         class="w-full"
         required
@@ -108,17 +117,22 @@ import type { RadioGroupItem } from "@nuxt/ui";
 import type { IFormulario } from "@/types/form";
 import { useForm } from "@/composables/useForm";
 import { useValidateSteps } from "@/composables/useValidateSteps";
+import { useAddress } from "@/composables/useAddress";
 
 const { form } = useForm();
 const { validateStep3, error } = useValidateSteps();
 const toast = useToast();
-
+const { cities } = useAddress();
+const selectedCity = ref<{ value: number; label: string } | undefined>(
+  undefined
+);
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 function next() {
+  form.value.cidade = selectedCity.value?.label ?? "";
   const { valid } = validateStep3(form.value);
   if (valid) {
     emit("next");
@@ -138,12 +152,6 @@ const situacaoOptions = [
   { label: "Autônomo", value: "autonomo" },
   { label: "Em transição de carreira", value: "em transicao de carreira" },
   { label: "Outro", value: "outro" },
-];
-
-const cidadeOptions = [
-  { label: "Maceió", value: "Maceio" },
-  { label: "Arapiraca", value: "Arapiraca" },
-  { label: "Outra...", value: "Outra..." },
 ];
 
 const presencialOptions = ref<RadioGroupItem[]>([

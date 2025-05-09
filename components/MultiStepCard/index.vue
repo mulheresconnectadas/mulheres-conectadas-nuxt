@@ -1,12 +1,10 @@
 <template>
-  <div
-    class="max-w-7xl w-full mx-auto bg-white rounded-md shadow-lg overflow-hidden"
-  >
+  <div class="max-w-7xl w-full mx-auto rounded-md shadow-lg overflow-hidden">
     <div v-if="step < 5" class="md:flex">
       <LeftPanel :step="step" />
       <RightPanel :step="step" :form="form" @next="next" @prev="prev" />
     </div>
-    <div v-else class="w-full">
+    <div v-else class="w-full bg-transparent">
       <Step5Thanks />
     </div>
   </div>

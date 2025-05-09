@@ -26,6 +26,9 @@ export function useForm() {
       {
         method: "POST",
         body: JSON.stringify(form.value),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
     console.log("RESPONSE", response);
