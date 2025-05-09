@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col h-screen relative">
-    <AppHeader class="sticky top-0 z-50" />
+  <div class="flex flex-col min-h-screen">
+    <AppHeader />
     <slot />
-    <AppFooter class="mt-auto" />
+    <AppFooter />
   </div>
 </template>
 

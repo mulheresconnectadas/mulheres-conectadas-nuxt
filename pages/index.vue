@@ -3,6 +3,9 @@
     <IndexHeroSection />
     <IndexStats />
     <IndexFrameVideo />
+    <IndexSolutions />
+    <IndexNews />
+    <IndexLocation />
   </div>
 </template>
 

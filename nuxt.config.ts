@@ -13,4 +13,10 @@ export default defineNuxtConfig({
 
   // seu CSS global
   css: ["~/assets/css/main.css"],
+  ui: {
+    theme: {
+      colors: ["primary", "secondary", "tertiary", "error"],
+    },
+    colorMode: false,
+  },
 });

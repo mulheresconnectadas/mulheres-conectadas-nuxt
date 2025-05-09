@@ -2,7 +2,7 @@
   <section class="container mx-auto px-20 py-16">
     <div class="grid grid-cols-3 gap-8">
       <!-- Card 1: Mulheres impactadas -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 w-full justify-center">
         <div class="bg-[#EA6AAC] p-2 rounded-2xl">
           <img
             src="/icons/womans.png"
@@ -19,7 +19,7 @@
       </div>
 
       <!-- Card 2: Projetos Apoiados -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 w-full justify-center">
         <div class="bg-[#EA6AAC] p-2 rounded-2xl">
           <img
             src="/icons/hands.png"
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Card 3: Reconhecida pela ONU -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 w-full justify-center">
         <div class="bg-[#EA6AAC] p-2 rounded-2xl">
           <img
             src="/icons/globo.png"

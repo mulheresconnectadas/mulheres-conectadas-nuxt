@@ -6,27 +6,63 @@
     font-family: "Montserrat", sans-serif;
   }
 }
+
+@theme static {
+  --color-primary-50: #f1eaf9;
+  --color-primary-100: #e3d6f4;
+  --color-primary-200: #c7aee9;
+  --color-primary-300: #ac85df;
+  --color-primary-400: #905dd4;
+  --color-primary-500: #7435c9;
+  --color-primary-600: #5d2aa1;
+  --color-primary-700: #461f79;
+  --color-primary-800: #2e1550;
+  --color-primary-900: #170a28;
+  --color-primary-950: #0b0514;
+
+  --color-secondary-50: #f0edf7;
+  --color-secondary-100: #e1dbef;
+  --color-secondary-200: #c4b7e0;
+  --color-secondary-300: #a793d1;
+  --color-secondary-400: #8a6fc2;
+  --color-secondary-500: #6c4bb2;
+  --color-secondary-600: #573c8f;
+  --color-secondary-700: #412d6b;
+  --color-secondary-800: #2b1e47;
+  --color-secondary-900: #150f23;
+  --color-secondary-950: #0a0711;
+
+  --color-tertiary-50: #fce7f2;
+  --color-tertiary-100: #fad0e6;
+  --color-tertiary-200: #f6a1cd;
+  --color-tertiary-300: #f173b5;
+  --color-tertiary-400: #ed449c;
+  --color-tertiary-500: #e91584;
+  --color-tertiary-600: #ba1169;
+  --color-tertiary-700: #8b0d4f;
+  --color-tertiary-800: #5d0834;
+  --color-tertiary-900: #2e041a;
+  --color-tertiary-950: #17020d;
+
+  --color-error-50: #fde7e7;
+  --color-error-100: #fbd1d1;
+  --color-error-200: #f8a2a2;
+  --color-error-300: #f47373;
+  --color-error-400: #f14444;
+  --color-error-500: #ed1515;
+  --color-error-600: #ba1111;
+  --color-error-700: #8b0d0d;
+  --color-error-800: #5d0808;
+  --color-error-900: #2e0404;
+  --color-error-950: #170202;
+}
+
 .bold {
   font-weight: 700;
   font-size: 49px;
   line-height: 53.9px;
   letter-spacing: 0%;
   vertical-align: middle;
-}
-.primary-color {
-  color: #2c144c;
-}
-
-.secondary-color {
-  color: #6c4bb2;
-}
-
-.tertiary-color {
-  color: #ec3494;
-}
-
-.quaternary-color {
-  color: #f46cac;
 }
 
 .router-link-active {
