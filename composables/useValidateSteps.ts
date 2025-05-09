@@ -26,6 +26,11 @@ export function useValidateSteps() {
       error[field] = undefined;
     }
 
+    if (form.nome && /\d/.test(form.nome)) {
+      console.log("Nome contém números");
+      missing.push("nome");
+      error["nome"] = "O nome não pode conter números";
+    }
     for (const field of requiredFields) {
       if (!form[field]) {
         missing.push(field);
