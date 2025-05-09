@@ -27,7 +27,6 @@ export function useValidateSteps() {
     }
 
     if (form.nome && /\d/.test(form.nome)) {
-      console.log("Nome contém números");
       missing.push("nome");
       error["nome"] = "O nome não pode conter números";
     }
@@ -35,7 +34,7 @@ export function useValidateSteps() {
     const emailValidation = await validateEmail(form.email);
     if (!emailValidation.valid) {
       missing.push("email");
-      error["email"] = "O email não é válido";
+      error["email"] = emailValidation.message;
     }
 
     for (const field of requiredFields) {
@@ -113,9 +112,13 @@ export function useValidateSteps() {
       {
         method: "POST",
         body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
     const data = await response.json();
+    console.log("DATA", data);
     return data;
   }
 
