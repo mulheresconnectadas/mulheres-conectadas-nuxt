@@ -10,7 +10,7 @@ export function useValidateSteps() {
 
   const error = reactive<Partial<Record<keyof IFormulario, string>>>({});
 
-  function validateStep2(form: IFormulario): ValidationResult {
+  async function validateStep2(form: IFormulario): Promise<ValidationResult> {
     const missing: (keyof IFormulario)[] = [];
     const requiredFields: (keyof IFormulario)[] = [
       "nome",
@@ -31,6 +31,13 @@ export function useValidateSteps() {
       missing.push("nome");
       error["nome"] = "O nome não pode conter números";
     }
+
+    const emailValidation = await validateEmail(form.email);
+    if (!emailValidation.valid) {
+      missing.push("email");
+      error["email"] = "O email não é válido";
+    }
+
     for (const field of requiredFields) {
       if (!form[field]) {
         missing.push(field);
@@ -100,6 +107,17 @@ export function useValidateSteps() {
       missing,
     };
   }
+  async function validateEmail(email: string) {
+    const response = await fetch(
+      "https://back-mulheres-conectadas.vercel.app/participantes/validar_email",
+      {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  }
 
-  return { validateStep2, validateStep3, validateStep4, error };
+  return { validateStep2, validateStep3, validateStep4, error, validateEmail };
 }
