@@ -10,6 +10,6 @@ export interface IFormulario {
   rede_social: string;
   cidade: string;
   deseja_participar_presencial: string;
-  como_sobre_programa: string;
+  como_soube_programa: string;
   autorizacao_lgpd: string;
 } 
