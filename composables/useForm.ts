@@ -14,7 +14,7 @@ export function useForm() {
     rede_social: "",
     cidade: "",
     deseja_participar_presencial: "",
-    como_sobre_programa: "",
+    como_soube_programa: "",
     autorizacao_lgpd: "",
   }));
 
