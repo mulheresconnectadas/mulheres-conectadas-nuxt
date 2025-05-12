@@ -21,7 +21,8 @@
     <UFormField class="w-full" :error="error['autorizacao_lgpd']">
       <div class="space-y-2">
         <p class="text-[#2C144C] font-medium">
-          Você concorda com a utilização de seus dados (LGPD)?
+          Você concorda com a utilização de seus dados (LGPD)? Conforme a Lei
+          Geral de Proteção de Dados - LGPD (Lei nº 13.709/2018).
         </p>
         <URadioGroup
           v-model="form.autorizacao_lgpd"
