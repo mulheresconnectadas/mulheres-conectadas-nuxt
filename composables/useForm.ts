@@ -19,8 +19,6 @@ export function useForm() {
   }));
 
   async function submit() {
-    console.clear();
-    console.log("FORM", form.value);
     const response = await fetch(
       "https://back-mulheres-conectadas.vercel.app/participantes/addUser",
       {
@@ -31,9 +29,7 @@ export function useForm() {
         },
       }
     );
-    console.log("RESPONSE", response);
     const data = await response.json();
-    console.log("DATA", data);
     return data;
   }
 

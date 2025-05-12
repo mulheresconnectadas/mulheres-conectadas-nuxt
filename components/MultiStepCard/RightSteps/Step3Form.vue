@@ -5,7 +5,7 @@
     <UFormField class="w-full" :error="error['contato']">
       <UInput
         v-model="form.contato"
-        type="text"
+        type="tel"
         maxlength="11"
         placeholder=""
         class="w-full"

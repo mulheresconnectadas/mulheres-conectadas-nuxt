@@ -33,7 +33,7 @@
       </p>
 
       <NuxtLink
-        to="/inscreva-se"
+        to="/inscricao"
         class="inline-block bg-[#6C4BB2] text-white px-8 py-3 rounded-full hover:bg-opacity-90 hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-lg"
       >
         Inscreva-se
