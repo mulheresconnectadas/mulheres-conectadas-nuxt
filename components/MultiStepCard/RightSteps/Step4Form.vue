@@ -2,36 +2,25 @@
   <form class="space-y-4" @submit.prevent="emit('next')">
     <!-- Campos Etapa 4 -->
     <UFormField class="w-full" :error="error['como_soube_programa']">
-      <div class="space-y-2">
-        <p class="text-[#2C144C] font-medium">
-          Como você ficou sabendo do Programa Mulheres Conectadas: Empoderamento
-          Digital no Semiárido?
-        </p>
-
-        <URadioGroup
-          v-model="form.como_soube_programa"
-          :items="sabendoOptions"
-          @update:model-value="
-            (val) => emit('update:form', 'como_soube_programa', val)
-          "
-        />
-      </div>
+      <RadioInput
+        v-model="form.como_soube_programa"
+        :options="sabendoOptions"
+        label="Como você ficou sabendo do Programa Mulheres Conectadas: Empoderamento Digital no Semiárido?"
+        @update:model-value="
+          (val) => emit('update:form', 'como_soube_programa', val)
+        "
+      />
     </UFormField>
     <!-- LGPD -->
     <UFormField class="w-full" :error="error['autorizacao_lgpd']">
-      <div class="space-y-2">
-        <p class="text-[#2C144C] font-medium">
-          Você concorda com a utilização de seus dados (LGPD)? Conforme a Lei
-          Geral de Proteção de Dados - LGPD (Lei nº 13.709/2018).
-        </p>
-        <URadioGroup
-          v-model="form.autorizacao_lgpd"
-          :items="lgpdOptions"
-          @update:model-value="
-            (val) => emit('update:form', 'autorizacao_lgpd', val)
-          "
-        />
-      </div>
+      <RadioInput
+        v-model="form.autorizacao_lgpd"
+        :options="lgpdOptions"
+        label="Você concorda com a utilização de seus dados (LGPD)? Conforme a Lei Geral de Proteção de Dados - LGPD (Lei nº 13.709/2018)."
+        @update:model-value="
+          (val) => emit('update:form', 'autorizacao_lgpd', val)
+        "
+      />
     </UFormField>
 
     <!-- Botões -->
@@ -57,7 +46,6 @@
 </template>
 
 <script setup lang="ts">
-import type { RadioGroupItem } from "@nuxt/ui";
 import type { IFormulario } from "@/types/form";
 import { useForm } from "@/composables/useForm";
 import { useValidateSteps } from "@/composables/useValidateSteps";
@@ -70,6 +58,11 @@ const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
+
+interface Option {
+  label: string;
+  value: string;
+}
 
 function next() {
   const { valid } = validateStep4(form.value);
@@ -88,12 +81,12 @@ function next() {
     });
   }
 }
-const lgpdOptions = ref<RadioGroupItem[]>([
+const lgpdOptions = ref<Option[]>([
   { label: "Sim", value: "sim" },
   { label: "Não", value: "nao" },
 ]);
 
-const sabendoOptions = ref<RadioGroupItem[]>([
+const sabendoOptions = ref<Option[]>([
   { label: "Instagram", value: "instagram" },
   { label: "LinkedIn", value: "linkedin" },
   { label: "WhatsApp", value: "whatsapp" },
