@@ -23,7 +23,17 @@
           : "Último passo! Quase lá!"
       }}
     </h2>
-    <img src="/inscricao/illustration.png" alt="Ilustração" class="mt-auto" />
+    <div class="grid grid-cols-3">
+      <img
+        src="/inscricao/illustration.png"
+        alt="Ilustração"
+        class="mt-auto"
+        :class="{
+          'col-start-2': props.step === 3,
+          'col-start-3': props.step === 4,
+        }"
+      />
+    </div>
   </div>
 </template>
 
