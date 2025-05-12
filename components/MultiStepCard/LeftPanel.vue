@@ -1,5 +1,5 @@
 <template>
-  <div class="md:w-1/2 bg-[#6c4bb2] text-white p-8 flex flex-col rounded-l-md">
+  <div class="md:w-1/2 bg-[#6c4bb2] text-white p-8 pb-0 flex flex-col rounded-l-md">
     <transition name="fade" mode="out-in">
       <component :is="leftComponent" :step="step" class="flex-1" />
     </transition>
