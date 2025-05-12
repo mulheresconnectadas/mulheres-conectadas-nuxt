@@ -105,7 +105,9 @@
       </UButton>
       <UButton
         type="button"
+        color="tertiary"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
+        :loading="loading"
         @click="next"
       >
         PRÓXIMO PASSO
@@ -122,13 +124,14 @@ import { useValidateSteps } from "@/composables/useValidateSteps";
 const { form } = useForm();
 const { validateStep2, error } = useValidateSteps();
 const toast = useToast();
-
+const loading = ref(false);
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 async function next() {
+  loading.value = true;
   const { valid } = await validateStep2(form.value);
   if (valid) {
     emit("next");
@@ -139,14 +142,15 @@ async function next() {
       color: "neutral",
     });
   }
+  loading.value = false;
 }
 
 const generoOptions = [
-  { label: "Mulher cisgênera", value: "Mulher cisgenero" },
+  { label: "Mulher cisgênera", value: "Mulher cisgenera" },
   { label: "Homem cisgênero", value: "Homem cisgenero" },
   {
     label: "Mulher transexual/transgênera",
-    value: "Mulher transexual/transgenero",
+    value: "Mulher transexual/transgenera",
   },
   {
     label: "Homem transexual/transgênero",
