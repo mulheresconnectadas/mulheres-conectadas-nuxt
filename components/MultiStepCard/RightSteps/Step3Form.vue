@@ -3,93 +3,62 @@
   <form class="space-y-10" @submit.prevent="emit('next')">
     <!-- Número de contato -->
     <UFormField class="w-full" :error="error['contato']">
-      <UInput
+      <BaseInput
         v-model="form.contato"
+        label="Número de contato"
+        padding-left-class="pl-42"
         type="tel"
-        maxlength="11"
-        placeholder=""
         class="w-full"
-        required
-        :ui="{ base: 'peer' }"
         @update:model-value="(val) => emit('update:form', 'contato', val)"
-      >
-        <label
-          class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal"
-        >
-          <span class="inline-flex bg-default px-1">Número de contato</span>
-        </label>
-      </UInput>
+      />
     </UFormField>
 
     <!-- Situação atual no mercado de trabalho -->
-    <UFormField
-      label="Situação atual no mercado de trabalho"
-      class="w-full"
-      :error="error['situacao_trabalho']"
-    >
-      <USelect
+    <UFormField class="w-full" :error="error['situacao_trabalho']">
+      <SelectInput
         v-model="form.situacao_trabalho"
-        :items="situacaoOptions"
-        placeholder="Qual é sua situação atual no mercado de trabalho?"
-        class="w-full"
-        required
+        label="Situação atual no mercado de trabalho"
+        :options="situacaoOptions"
+        padding-left-class="pl-74"
         @update:model-value="
-          (val) => emit('update:form', 'situacao_trabalho', String(val ?? ''))
+          (val) => emit('update:form', 'situacao_trabalho', val)
         "
       />
     </UFormField>
 
     <!-- Rede social -->
     <UFormField class="w-full" :error="error['rede_social']">
-      <UInput
+      <BaseInput
         v-model="form.rede_social"
+        label="Rede social"
+        padding-left-class="pl-26"
         type="text"
-        placeholder=""
         class="w-full"
-        required
-        :ui="{ base: 'peer' }"
         @update:model-value="(val) => emit('update:form', 'rede_social', val)"
-      >
-        <label
-          class="pointer-events-none absolute left-0 -top-2.5 text-highlighted text-xs font-medium px-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-highlighted peer-focus:text-xs peer-focus:font-medium peer-placeholder-shown:text-sm peer-placeholder-shown:text-dimmed peer-placeholder-shown:top-1.5 peer-placeholder-shown:font-normal"
-        >
-          <span class="inline-flex bg-default px-1">Rede social</span>
-        </label>
-      </UInput>
+      />
     </UFormField>
+
     <!-- Cidade onde mora -->
-    <UFormField
-      label="Cidade onde mora"
-      class="w-full"
-      :error="error['cidade']"
-    >
-      <USelectMenu
+    <UFormField class="w-full" :error="error['cidade']">
+      <SelectMenuInput
         v-model="selectedCity"
-        :items="cities"
-        placeholder="Cidade onde mora"
-        class="w-full"
-        required
-        @update:model-value="
-          (val) => emit('update:form', 'cidade', String(val ?? ''))
-        "
+        :options="cities"
+        label="Cidade onde mora"
+        padding-left-class="pl-38"
+        @update:model-value="(val: Option) => emit('update:form', 'cidade', val.label)"
       />
     </UFormField>
 
     <!-- Participação presencial -->
     <UFormField class="w-full" :error="error['deseja_participar_presencial']">
-      <div class="space-y-2">
-        <p class="text-[#2C144C] font-medium">
-          Você deseja participar de forma presencial?
-        </p>
-
-        <URadioGroup
-          v-model="form.deseja_participar_presencial"
-          :items="presencialOptions"
-          @update:model-value="
-            (val) => emit('update:form', 'deseja_participar_presencial', val)
-          "
-        />
-      </div>
+      <RadioInput
+        v-model="form.deseja_participar_presencial"
+        :options="presencialOptions"
+        label="Você deseja participar do Programa Mulheres Conectadas: Empoderamento Digital no Semiárido de forma presencial?"
+        @update:model-value="
+          (val) => emit('update:form', 'deseja_participar_presencial', val)
+        "
+      />
     </UFormField>
 
     <!-- Botões -->
@@ -113,26 +82,45 @@
 </template>
 
 <script setup lang="ts">
-import type { RadioGroupItem } from "@nuxt/ui";
 import type { IFormulario } from "@/types/form";
 import { useForm } from "@/composables/useForm";
 import { useValidateSteps } from "@/composables/useValidateSteps";
 import { useAddress } from "@/composables/useAddress";
+import { ref, computed, watch } from "vue";
+
+interface Option {
+  value: string;
+  label: string;
+}
 
 const { form } = useForm();
 const { validateStep3, error } = useValidateSteps();
 const toast = useToast();
-const { cities } = useAddress();
-const selectedCity = ref<{ value: number; label: string } | undefined>(
-  undefined
+const { cities: originalCities } = useAddress();
+const cities = computed(() =>
+  originalCities.value.map((city) => ({
+    ...city,
+    value: String(city.value),
+  }))
 );
+const selectedCity = ref<Option>({
+  value: "",
+  label: "",
+});
+
+// Sincroniza o valor com form.cidade
+watch(selectedCity, (val) => {
+  if (val) {
+    form.value.cidade = val.label;
+  }
+});
+
 const emit = defineEmits<{
   (e: "next" | "prev"): void;
   (e: "update:form", field: keyof IFormulario, value: string): void;
 }>();
 
 function next() {
-  form.value.cidade = selectedCity.value?.label ?? "";
   const { valid } = validateStep3(form.value);
   if (valid) {
     emit("next");
@@ -154,9 +142,9 @@ const situacaoOptions = [
   { label: "Outro", value: "outro" },
 ];
 
-const presencialOptions = ref<RadioGroupItem[]>([
+const presencialOptions = [
   { label: "Sim", value: "sim" },
   { label: "Não", value: "nao" },
   { label: "Talvez", value: "talvez" },
-]);
+];
 </script>
