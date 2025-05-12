@@ -45,8 +45,9 @@
       </UButton>
       <UButton
         type="button"
+        color="tertiary"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
-        :disabled="loading"
+        :loading="loading"
         @click="next"
       >
         Finalizar Inscrição
