@@ -24,7 +24,7 @@
             </p>
           </div>
           <NuxtLink
-            to="#"
+            to="/inscricao"
             class="bg-[#6C4BB2] text-white rounded-full px-6 py-2 w-fit flex items-center gap-2 hover:bg-[#5a3e94] transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
           >
             Descubra
@@ -54,7 +54,7 @@
             </p>
           </div>
           <NuxtLink
-            to="#"
+            to="/inscricao"
             class="bg-[#EC3494] text-white rounded-full px-6 py-2 w-fit flex items-center gap-2 hover:bg-[#d02d7e] transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg justify-self-end"
           >
             Descubra

@@ -27,13 +27,13 @@
           Entre em contato e leve nossas soluções para sua região.
         </p>
 
-        <a
-          href="#"
+        <NuxtLink
+          to="/inscricao"
           class="inline-flex space-x-2 items-center bg-[#EE3792] hover:bg-[#d02d7e] text-white font-medium px-5 py-3 rounded-full transition"
         >
           <Icon name="mdi:arrow-left" class="text-white" />
           <div>Acesse</div>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </section>
