@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col justify-between min-h-screen">
     <AppHeader />
     <slot />
     <AppFooter />
