@@ -18,3 +18,9 @@ export interface ILogin {
   email: string;
   senha: string;
 }
+
+export interface IError {
+  detail: {
+    msg: string;
+  };
+}
