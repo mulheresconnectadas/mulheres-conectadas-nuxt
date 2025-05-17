@@ -60,7 +60,7 @@ async function onSubmit() {
     loading.value = true;
     const res = await submit(form.value.email, form.value.senha);
     localStorage.setItem("nome", res.nome);
-    router.push("/");
+    router.push("/dashboard");
   } catch (error: unknown) {
     let msg = "Erro ao fazer login";
     if (error instanceof Error) {
