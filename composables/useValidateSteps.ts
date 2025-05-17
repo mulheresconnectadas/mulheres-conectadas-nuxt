@@ -118,7 +118,6 @@ export function useValidateSteps() {
       }
     );
     const data = await response.json();
-    console.log("DATA", data);
     return data;
   }
 
