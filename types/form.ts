@@ -13,3 +13,8 @@ export interface IFormulario {
   como_soube_programa: string;
   autorizacao_lgpd: string;
 }
+
+export interface ILogin {
+  email: string;
+  senha: string;
+}
