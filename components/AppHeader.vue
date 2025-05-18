@@ -5,17 +5,14 @@ const isAtTop = ref(true);
 const hideOnScrollDown = ref(false);
 const lastScrollY = ref(0);
 const scrollProgress = ref(0);
+const isMobileMenuOpen = ref(false);
 
 function handleScroll() {
   const currentY = window.scrollY;
-  // 1) Shrink (já existente)
   isAtTop.value = currentY === 0;
-
-  // 2) Hide on scroll down / show on scroll up
   hideOnScrollDown.value = currentY > lastScrollY.value && currentY > 100;
   lastScrollY.value = currentY;
 
-  // 3) Progress bar
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   scrollProgress.value = docHeight > 0 ? (currentY / docHeight) * 100 : 0;
 }
@@ -29,7 +26,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Progress Bar -->
+  <!-- Barra de Progresso -->
   <div
     class="fixed top-0 left-0 h-1 bg-pink-500 z-[60] transition-width duration-150"
     :style="{ width: scrollProgress + '%' }"
@@ -44,18 +41,25 @@ onUnmounted(() => {
   >
     <div
       :class="[
-        'mx-auto px-4 flex justify-between items-center transition-all duration-300',
+        'mx-auto px-4 flex items-center justify-between transition-all duration-300',
         !isAtTop ? 'max-w-5xl' : 'max-w-7xl',
       ]"
     >
+      <!-- Logo -->
       <NuxtLink
         to="/"
         class="flex items-center space-x-4"
         active-class="border-none"
       >
-        <img src="/logo.png" alt="Mulheres Conectadas" class="w-52 logo" />
+        <img
+          src="/logo.png"
+          alt="Mulheres Conectadas"
+          class="w-40 sm:w-52 logo"
+        />
       </NuxtLink>
-      <nav class="flex items-center space-x-8">
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center space-x-6">
         <NuxtLink
           to="/"
           class="text-white hover:text-gray-200 pb-1 nav-link"
@@ -71,7 +75,6 @@ onUnmounted(() => {
         >
           Administração
         </NuxtLink>
-
         <NuxtLink
           to="/inscricao"
           class="bg-[#4B2E83] text-white px-6 py-2 rounded-full hover:bg-opacity-90 hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-lg nav-link"
@@ -80,13 +83,59 @@ onUnmounted(() => {
           Inscreva-se
         </NuxtLink>
       </nav>
+
+      <!-- Botão Menu Mobile -->
+      <button
+        class="md:hidden text-white focus:outline-none"
+        @click="isMobileMenuOpen = !isMobileMenuOpen"
+      >
+        <Icon :name="isMobileMenuOpen ? 'mdi:close' : 'mdi:menu'" size="32" />
+      </button>
     </div>
+
+    <!-- Menu Mobile -->
+    <transition name="fade">
+      <div
+        v-if="isMobileMenuOpen"
+        class="md:hidden flex flex-col items-center gap-4 px-6 pb-6"
+      >
+        <NuxtLink
+          to="/"
+          class="text-white text-lg font-medium"
+          @click="isMobileMenuOpen = false"
+        >
+          Início
+        </NuxtLink>
+        <NuxtLink
+          to="/login"
+          class="text-white text-lg font-medium"
+          @click="isMobileMenuOpen = false"
+        >
+          Administração
+        </NuxtLink>
+        <NuxtLink
+          to="/inscricao"
+          class="bg-[#4B2E83] text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition"
+          @click="isMobileMenuOpen = false"
+        >
+          Inscreva-se
+        </NuxtLink>
+      </div>
+    </transition>
   </header>
 </template>
 
 <style scoped>
-/* Ajuste do logo (caso queira animar escala também) */
 .logo {
   transition: transform 0.3s ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
