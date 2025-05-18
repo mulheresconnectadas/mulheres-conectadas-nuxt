@@ -1,55 +1,34 @@
 <template>
-  <section class="container mx-auto px-20 py-16">
-    <div class="grid grid-cols-3 gap-8">
-      <!-- Card 1: Mulheres impactadas -->
-      <div class="flex items-center gap-6 w-full justify-center">
-        <div class="bg-[#EA6AAC] p-2 rounded-2xl">
+  <section class="container mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card base -->
+      <div
+        v-for="(card, i) in cards"
+        :key="i"
+        class="flex flex-col items-center text-center space-y-4"
+      >
+        <div class="bg-[#EA6AAC] p-4 rounded-2xl">
           <img
-            src="/icons/womans.png"
-            alt="Ícone de grupo de mulheres"
-            class="w-24 h-24 text-white"
+            :src="card.icon"
+            :alt="card.alt"
+            class="w-20 sm:w-24 h-20 sm:h-24"
           />
         </div>
         <div>
-          <h3 class="text-4xl font-bold text-[#EA6AAC]">+3 mil</h3>
-          <p class="text-[#6C4BB2] text-xl font-medium">
-            Mulheres<br />impactadas
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 2: Projetos Apoiados -->
-      <div class="flex items-center gap-6 w-full justify-center">
-        <div class="bg-[#EA6AAC] p-2 rounded-2xl">
-          <img
-            src="/icons/hands.png"
-            alt="Ícone de aperto de mãos"
-            class="w-24 h-24 text-white"
-          />
-        </div>
-        <div>
-          <h3 class="text-4xl font-bold text-[#EA6AAC]">+80</h3>
-          <p class="text-[#6C4BB2] text-xl font-medium">
-            Projetos<br />Apoiados
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 3: Reconhecida pela ONU -->
-      <div class="flex items-center gap-6 w-full justify-center">
-        <div class="bg-[#EA6AAC] p-2 rounded-2xl">
-          <img
-            src="/icons/globo.png"
-            alt="Ícone de globo"
-            class="w-24 h-24 text-white"
-          />
-        </div>
-        <div class="flex flex-col">
-          <a href="#" class="text-[#EA6AAC] text-sm hover:underline">
-            Acesse o e-book
-          </a>
-          <p class="text-[#6C4BB2] text-xl font-medium">
-            Reconhecida<br />pela ONU
+          <h3 v-if="card.isLink" class="text-3xl sm:text-4xl font-bold">
+            <a
+              :href="card.link"
+              class="text-sm hover:underline text-[#EA6AAC]"
+              >{{ card.title }}</a
+            >
+          </h3>
+          <h3 v-else class="text-3xl sm:text-4xl font-bold text-[#EA6AAC]">
+            {{ card.title }}
+          </h3>
+          <p
+            class="text-[#6C4BB2] text-lg sm:text-xl font-medium whitespace-pre-line"
+          >
+            {{ card.subtitle }}
           </p>
         </div>
       </div>
@@ -57,4 +36,29 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+const cards = [
+  {
+    icon: "/icons/womans.png",
+    alt: "Ícone de grupo de mulheres",
+    title: "+3 mil",
+    subtitle: "Mulheres\nimpactadas",
+    isLink: false,
+  },
+  {
+    icon: "/icons/hands.png",
+    alt: "Ícone de aperto de mãos",
+    title: "+80",
+    subtitle: "Projetos\nApoiados",
+    isLink: false,
+  },
+  {
+    icon: "/icons/globo.png",
+    alt: "Ícone de globo",
+    title: "Acesse o e-book",
+    subtitle: "Reconhecida\npela ONU",
+    isLink: true,
+    link: "#",
+  },
+];
+</script>
