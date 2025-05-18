@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-// prop opcional com default
 defineProps({
   title: {
     type: String,
@@ -27,7 +26,6 @@ defineProps({
 </script>
 
 <style scoped>
-/* recorte diagonal de 2rem para bater com o w-[calc(100%+2rem)] */
 .clip-diagonal {
   clip-path: polygon(0 0, 100% 0, calc(100% - 8rem) 100%, 0 100%);
 }
