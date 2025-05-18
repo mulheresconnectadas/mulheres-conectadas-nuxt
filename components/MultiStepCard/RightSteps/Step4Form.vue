@@ -1,22 +1,28 @@
 <template>
-  <form class="space-y-4" @submit.prevent="emit('next')">
-    <!-- Campos Etapa 4 -->
+  <form
+    class="space-y-6 w-full max-w-2xl px-4 sm:px-6 mx-auto"
+    @submit.prevent="emit('next')"
+  >
+    <!-- Como soube do programa -->
     <UFormField class="w-full" :error="error['como_soube_programa']">
       <RadioInput
         v-model="form.como_soube_programa"
         :options="sabendoOptions"
         label="Como você ficou sabendo do Programa Mulheres Conectadas: Empoderamento Digital no Semiárido?"
+        label-class="break-words whitespace-normal text-sm sm:text-base leading-tight"
         @update:model-value="
           (val) => emit('update:form', 'como_soube_programa', val)
         "
       />
     </UFormField>
+
     <!-- LGPD -->
     <UFormField class="w-full" :error="error['autorizacao_lgpd']">
       <RadioInput
         v-model="form.autorizacao_lgpd"
         :options="lgpdOptions"
         label="Você concorda com a utilização de seus dados (LGPD)? Conforme a Lei Geral de Proteção de Dados - LGPD (Lei nº 13.709/2018)."
+        label-class="break-words whitespace-normal text-sm sm:text-base leading-tight"
         @update:model-value="
           (val) => emit('update:form', 'autorizacao_lgpd', val)
         "
@@ -24,7 +30,7 @@
     </UFormField>
 
     <!-- Botões -->
-    <div class="flex justify-evenly mt-6">
+    <div class="flex flex-col md:flex-row justify-between gap-4 mt-6">
       <UButton
         type="button"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
@@ -69,10 +75,11 @@ function next() {
 
   if (valid) {
     loading.value = true;
-    submit().then(() => {
-      loading.value = false;
-      emit("next");
-    });
+    // submit().then(() => {
+    //   loading.value = false;
+    //   emit("next");
+    // });
+    emit("next");
   } else {
     toast.add({
       title: "Erro",
