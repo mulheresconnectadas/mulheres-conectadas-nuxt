@@ -2,10 +2,7 @@
   <div class="space-y-4">
     <h2 class="font-semibold text-xl">
       Seja bem-vinda ao
-      <strong
-        >Programa Mulheres Conectadas: Empoderamento Digital no
-        Semiárido!</strong
-      >
+      <strong>Programa Mulheres Conectadas: Empoderamento Digital</strong>
     </h2>
     <p>
       Uma iniciativa <strong>GRATUITA</strong> para mulheres que querem
