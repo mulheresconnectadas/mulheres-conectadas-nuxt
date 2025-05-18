@@ -1,5 +1,7 @@
 <template>
-  <div class="md:w-1/2 bg-white p-8 rounded-r-md">
+  <div
+    class="w-full md:w-1/2 bg-white px-4 py-6 md:p-8 flex flex-col md:rounded-r-md"
+  >
     <transition name="fade" mode="out-in">
       <component
         :is="rightComponent"
@@ -7,7 +9,8 @@
         :form="form"
         @next="emit('next')"
         @prev="emit('prev')"
-        @update:form="(field: keyof IFormulario, value: string) => emit('update:form', field, value)"
+        @update:form="(field: keyof IFormulario, value: string) =>
+          emit('update:form', field, value)"
       />
     </transition>
   </div>
