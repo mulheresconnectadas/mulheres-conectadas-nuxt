@@ -1,7 +1,6 @@
-<!-- components/MultiStepCard/RightSteps/Step2Form.vue -->
 <template>
   <form
-    class="flex flex-col gap-4 h-full items-center"
+    class="flex flex-col gap-6 h-full w-full max-w-2xl items-center px-4 sm:px-6"
     @submit.prevent="emit('next')"
   >
     <!-- Nome -->
@@ -70,7 +69,7 @@
     </UFormField>
 
     <!-- Botões -->
-    <div class="flex justify-evenly mt-6 w-full">
+    <div class="flex flex-col md:flex-row justify-between gap-4 mt-6 w-full">
       <UButton
         type="button"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
