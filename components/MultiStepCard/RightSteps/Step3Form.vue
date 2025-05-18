@@ -1,6 +1,8 @@
-<!-- components/MultiStepCard/RightSteps/Step3Form.vue -->
 <template>
-  <form class="space-y-10" @submit.prevent="emit('next')">
+  <form
+    class="space-y-6 w-full max-w-2xl px-4 sm:px-6 mx-auto"
+    @submit.prevent="emit('next')"
+  >
     <!-- Número de contato -->
     <UFormField class="w-full" :error="error['contato']">
       <BaseInput
@@ -62,7 +64,7 @@
     </UFormField>
 
     <!-- Botões -->
-    <div class="flex justify-evenly mt-6">
+    <div class="flex flex-col md:flex-row justify-between gap-4 mt-6">
       <UButton
         type="button"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
@@ -70,6 +72,7 @@
       >
         VOLTAR
       </UButton>
+
       <UButton
         type="button"
         class="w-full md:w-auto block shadow-md bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-full transition hover:shadow-lg hover:scale-105 duration-300 cursor-pointer"
