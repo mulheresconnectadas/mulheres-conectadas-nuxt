@@ -23,6 +23,20 @@
         >
           Início
         </NuxtLink>
+        <NuxtLink
+          to="/login"
+          class="text-white hover:text-gray-200 pb-1 nav-link"
+          active-class="router-link-active"
+        >
+          Administração
+        </NuxtLink>
+        <NuxtLink
+          to="/inscricao"
+          class="bg-[#4B2E83] text-white px-6 py-2 rounded-full hover:bg-opacity-90 hover:scale-105 transition-all duration-300 ease-in-out hover:shadow-lg nav-link"
+          active-class="bg-[#4B2E83] text-white px-6 py-2 rounded-full"
+        >
+          Inscreva-se
+        </NuxtLink>
       </nav>
     </div>
   </header>

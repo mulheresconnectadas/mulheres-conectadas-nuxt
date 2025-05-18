@@ -64,6 +64,13 @@ onUnmounted(() => {
         >
           Início
         </NuxtLink>
+        <NuxtLink
+          to="/login"
+          class="text-white hover:text-gray-200 pb-1 nav-link"
+          active-class="router-link-active"
+        >
+          Administração
+        </NuxtLink>
 
         <NuxtLink
           to="/inscricao"
