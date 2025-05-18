@@ -7,7 +7,9 @@
       alt="Inscrição"
       class="w-full mt-10"
     />
-    <MultiStepCard />
+    <div class="w-full mx-auto px-4 sm:px-6 md:px-10">
+      <MultiStepCard />
+    </div>
   </div>
 </template>
 
