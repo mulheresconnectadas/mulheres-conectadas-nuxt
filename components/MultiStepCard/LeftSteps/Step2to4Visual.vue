@@ -1,26 +1,51 @@
 <template>
-  <div class="flex flex-col h-full">
-    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
-      <img src="/inscricao/logo-inova.png" alt="Apoio financeiro" class="h-8" />
-      <img
-        src="/inscricao/logo-sudene.png"
-        alt="Apoio institucional"
-        class="h-8"
-      />
-      <img
-        src="/inscricao/logo-ifal.png"
-        alt="Apoio institucional"
-        class="h-8"
-      />
-      <img src="/inscricao/logo-mulheres.png" alt="Realização" class="h-8" />
+  <div class="flex flex-col h-full items-end gap-5">
+    <div class="flex flex-wrap justify-center md:justify-end gap-4 mb-6">
+      <div class="flex flex-col items-center space-y-2">
+        <div class="font-medium text-white opacity-50">Apoio financeiro:</div>
+        <div class="flex flex-row gap-4">
+          <img
+            src="/inscricao/logo-inova.png"
+            alt="Apoio financeiro"
+            class="h-8"
+          />
+          <img
+            src="/inscricao/logo-sudene.png"
+            alt="Apoio institucional"
+            class="h-8"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <div class="font-medium text-white opacity-50">
+          Apoio institucional:
+        </div>
+        <div class="flex flex-row gap-4">
+          <img
+            src="/inscricao/logo-ifal.png"
+            alt="Apoio institucional"
+            class="h-8"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <div class="font-medium text-white opacity-50">Realização:</div>
+        <div class="flex flex-row gap-4">
+          <img
+            src="/inscricao/logo-mulheres.png"
+            alt="Realização"
+            class="h-8"
+          />
+        </div>
+      </div>
     </div>
-    <h2 class="text-3xl font-semibold mb-auto">
+    <h2 class="text-3xl font-medium mb-auto max-w-md text-right">
       {{
         props.step === 2
           ? "Vamos começar sua inscrição!"
           : props.step === 3
           ? "Falta pouco para finalizar!"
-          : "Último passo! Quase lá!"
+          : "Último passo! Quase lá! Finalize sua inscrição. Revise e envie para concluir."
       }}
     </h2>
     <div class="grid grid-cols-3">
