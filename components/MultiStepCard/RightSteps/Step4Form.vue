@@ -79,7 +79,6 @@ function next() {
       loading.value = false;
       emit("next");
     });
-    emit("next");
   } else {
     toast.add({
       title: "Erro",
