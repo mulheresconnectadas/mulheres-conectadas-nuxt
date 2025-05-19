@@ -8,12 +8,12 @@
       <!-- Bloco 1 -->
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <div
-          class="bg-[#6C4BB2] rounded-[55px] w-full lg:w-[80%] aspect-[4/3] overflow-hidden flex items-center justify-center"
+          class="bg-[#6C4BB2] rounded-[55px] w-full lg:w-[80%] lg:aspect-[4/3] overflow-hidden flex items-center justify-center"
         >
           <img
             src="/index/solucao1.png"
             alt="Mulher feliz no notebook"
-            class="rounded-[40px] object-cover w-full h-full"
+            class="rounded-[40px] object-cover w-full h-ful pt-8"
           />
         </div>
         <div
@@ -46,7 +46,7 @@
       <!-- Bloco 2 -->
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <div
-          class="bg-[#EC3494] rounded-[55px] w-full lg:w-[80%] aspect-[4/3] overflow-hidden flex items-center justify-center"
+          class="bg-[#EC3494] rounded-[55px] w-full lg:w-[80%] lg:aspect-[4/3] overflow-hidden flex items-center justify-center"
         >
           <img
             src="/index/solucao2.png"
