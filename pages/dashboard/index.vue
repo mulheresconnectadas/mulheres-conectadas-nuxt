@@ -71,7 +71,7 @@
     <aside
       class="w-full md:w-1/4 bg-purple-900 text-white rounded-2xl shadow-lg p-6 space-y-6 relative"
     >
-      <div class="sticky top-10 right-0">
+      <div class="sticky top-20 right-0">
         <div class="flex flex-col items-center text-center">
           <div
             class="w-24 h-24 bg-purple-700 rounded-full flex items-center justify-center text-4xl"
@@ -86,6 +86,7 @@
           </button>
           <UButton
             class="w-full text-left px-4 py-2 bg-purple-700 rounded-lg flex items-center gap-2"
+            @click="exportToCsv"
           >
             <Icon name="mdi:export" size="20" />
             <div>Exportar</div>
@@ -98,8 +99,9 @@
 
 <script setup lang="ts">
 import { useDashboard } from "@/composables/useDashboard";
+import { useExport } from "@/composables/useExport";
 definePageMeta({ layout: "logged" });
-
+const { exportToCsv } = useExport();
 const {
   user,
   por_cidade,
