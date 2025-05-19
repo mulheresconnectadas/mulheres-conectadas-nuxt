@@ -23,14 +23,6 @@
         >
           Dashboard
         </NuxtLink>
-        <NuxtLink
-          to="/"
-          class="text-white hover:text-gray-200 pb-1 nav-link"
-          active-class="router-link-active"
-          exact
-        >
-          Perfil
-        </NuxtLink>
       </nav>
     </div>
   </header>
