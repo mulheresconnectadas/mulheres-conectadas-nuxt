@@ -75,10 +75,10 @@ function next() {
 
   if (valid) {
     loading.value = true;
-    // submit().then(() => {
-    //   loading.value = false;
-    //   emit("next");
-    // });
+    submit().then(() => {
+      loading.value = false;
+      emit("next");
+    });
     emit("next");
   } else {
     toast.add({
