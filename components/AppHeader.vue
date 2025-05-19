@@ -116,6 +116,7 @@ onUnmounted(() => {
         <NuxtLink
           to="/inscricao"
           class="bg-[#4B2E83] text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition"
+          active-class="bg-[#4B2E83] text-white px-6 py-2 rounded-full"
           @click="isMobileMenuOpen = false"
         >
           Inscreva-se
