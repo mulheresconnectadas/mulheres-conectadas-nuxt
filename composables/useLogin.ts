@@ -8,7 +8,7 @@ export function useLogin() {
   // composable.ts
   async function submit(email: string, senha: string) {
     const response = await fetch(
-      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/admin/login",
+      "https://back-mulheres-conectadas-dusky.vercel.app/participantes/admin/login",
       {
         method: "POST",
         body: JSON.stringify({ email, senha }),
