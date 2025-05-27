@@ -4,8 +4,15 @@
     <section class="w-full md:w-3/4 space-y-6">
       <!-- Gráfico 3 -->
       <div class="bg-purple-100 p-4 rounded-xl shadow-md">
-        <h3 class="text-lg font-semibold text-purple-900 mb-2">
-          Inscritos por Cidade
+        <h3
+          class="text-lg font-semibold text-purple-900 mb-2 flex items-center justify-between"
+        >
+          <div>Inscritos por Cidade</div>
+          <UButton
+            icon="mdi:download"
+            size="xl"
+            @click="exportInscritosPorCidade"
+          />
         </h3>
         <ClientOnly>
           <ChartsChartBar
@@ -17,11 +24,18 @@
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="bg-purple-100 p-4 rounded-xl shadow-md">
-          <h3 class="text-lg font-semibold text-purple-900 mb-2">
-            Inscritos por Escolaridade
+          <h3
+            class="text-lg font-semibold text-purple-900 mb-2 flex items-center justify-between"
+          >
+            <div>Inscritos por Escolaridade</div>
+            <UButton
+              icon="mdi:download"
+              size="xl"
+              @click="exportInscritosPorEscolaridade"
+            />
           </h3>
           <ClientOnly>
-            <ChartsChartDonut
+            <ChartsChartBar
               v-if="por_escolaridade.labels.length"
               :labels="por_escolaridade.labels"
               :data="por_escolaridade.data"
@@ -30,8 +44,15 @@
         </div>
 
         <div class="bg-purple-100 p-4 rounded-xl shadow-md">
-          <h3 class="text-lg font-semibold text-purple-900 mb-4">
-            Inscritos por Situação de Trabalho
+          <h3
+            class="text-lg font-semibold text-purple-900 mb-2 flex items-center justify-between"
+          >
+            <div>Inscritos por Situação de Trabalho</div>
+            <UButton
+              icon="mdi:download"
+              size="xl"
+              @click="exportInscritosPorSituacaoTrabalho"
+            />
           </h3>
           <ClientOnly>
             <ChartsChartPolarArea
@@ -42,8 +63,15 @@
           </ClientOnly>
         </div>
         <div class="bg-purple-100 p-4 rounded-xl shadow-md">
-          <h3 class="text-lg font-semibold text-purple-900 mb-2">
-            Inscritos por Escolaridade e Etnia
+          <h3
+            class="text-lg font-semibold text-purple-900 mb-2 flex items-center justify-between"
+          >
+            <div>Inscritos por Escolaridade e Etnia</div>
+            <UButton
+              icon="mdi:download"
+              size="xl"
+              @click="exportInscritosPorEscolaridadeEEtnia"
+            />
           </h3>
           <ClientOnly>
             <ChartsChartGroupedBar
@@ -54,8 +82,15 @@
           </ClientOnly>
         </div>
         <div class="bg-purple-100 p-4 rounded-xl shadow-md">
-          <h3 class="text-lg font-semibold text-purple-900 mb-2">
-            Top Cidades Presenciais
+          <h3
+            class="text-lg font-semibold text-purple-900 mb-2 flex items-center justify-between"
+          >
+            <div>Top Cidades Presenciais</div>
+            <UButton
+              icon="mdi:download"
+              size="xl"
+              @click="exportTopCidadesPresenciais"
+            />
           </h3>
           <ClientOnly>
             <ChartsChartStackedBar
@@ -101,7 +136,14 @@
 import { useDashboard } from "@/composables/useDashboard";
 import { useExport } from "@/composables/useExport";
 definePageMeta({ layout: "logged" });
-const { exportToCsv } = useExport();
+const {
+  exportToCsv,
+  exportInscritosPorCidade,
+  exportInscritosPorSituacaoTrabalho,
+  exportInscritosPorEscolaridade,
+  exportInscritosPorEscolaridadeEEtnia,
+  exportTopCidadesPresenciais,
+} = useExport();
 const {
   user,
   por_cidade,
