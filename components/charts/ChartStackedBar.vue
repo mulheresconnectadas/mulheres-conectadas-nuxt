@@ -13,14 +13,17 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Registrar os elementos e o plugin
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
   CategoryScale,
   LinearScale,
-  BarElement
+  BarElement,
+  ChartDataLabels
 );
 
 // Props para receber dados
@@ -33,27 +36,27 @@ const props = defineProps<{
   }[];
 }>();
 
-// Define cores padrão se não vierem
+// Cores padrão
 const defaultColors = [
   "#6C4BB2", // sim
   "#F43F5E", // nao
   "#FBBF24", // talvez
 ];
 
-// Gera os datasets com cor, se não tiverem
+// Aplicar cores se não vierem
 const preparedDatasets = props.datasets.map((dataset, index) => ({
   ...dataset,
   backgroundColor:
     dataset.backgroundColor || defaultColors[index % defaultColors.length],
 }));
 
-// Dados do gráfico
+// Dados para o gráfico
 const chartData = {
   labels: props.labels,
   datasets: preparedDatasets,
 };
 
-// Opções do gráfico
+// Opções com datalabels para stacked bars
 const options = {
   responsive: true,
   plugins: {
@@ -62,6 +65,16 @@ const options = {
     },
     title: {
       display: false,
+    },
+    datalabels: {
+      color: "#000",
+      font: {
+        weight: "bold" as const,
+        size: 15,
+      },
+      anchor: "end" as const, // ou "end" para topo da pilha
+      align: "bottom" as const, // ou "top" para topo da pilha
+      formatter: (value: number) => value >= 3 ? value : "",
     },
   },
   scales: {

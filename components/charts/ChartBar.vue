@@ -13,14 +13,17 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Registrar tudo, inclusive o plugin de datalabels
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
   CategoryScale,
   LinearScale,
-  BarElement
+  BarElement,
+  ChartDataLabels
 );
 
 const props = defineProps<{
@@ -44,9 +47,24 @@ const options = {
   plugins: {
     legend: { display: false },
     title: { display: false },
+    datalabels: {
+      anchor: "end" as const, // posição do texto
+      align: "bottom" as const, // alinhamento do texto
+      color: "#333",
+      font: {
+        weight: "bold" as const,
+        size: 20,
+      },
+      formatter: (value: number) => value,
+    },
   },
   scales: {
-    y: { beginAtZero: true },
+    y: {
+      beginAtZero: true,
+      ticks: {
+        stepSize: 1,
+      },
+    },
   },
 };
 </script>

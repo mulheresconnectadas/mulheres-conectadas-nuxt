@@ -14,7 +14,9 @@ import {
   LineElement,
   Filler,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Registrar o plugin e elementos do gráfico Radar
 ChartJS.register(
   Title,
   Tooltip,
@@ -22,7 +24,8 @@ ChartJS.register(
   RadialLinearScale,
   PointElement,
   LineElement,
-  Filler
+  Filler,
+  ChartDataLabels
 );
 
 const props = defineProps<{
@@ -49,6 +52,16 @@ const options = {
   plugins: {
     legend: { position: "top" as const },
     title: { display: false },
+    datalabels: {
+      color: "#000",
+      font: {
+        weight: "bold" as const,
+        size: 12,
+      },
+      align: "end" as const,
+      anchor: "end" as const,
+      formatter: (value: number) => value,
+    },
   },
 };
 </script>

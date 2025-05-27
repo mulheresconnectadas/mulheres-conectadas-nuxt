@@ -5,8 +5,10 @@
 <script setup lang="ts">
 import { Doughnut } from "vue-chartjs";
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
-ChartJS.register(Title, Tooltip, Legend, ArcElement);
+// Registrar o plugin de datalabels também
+ChartJS.register(Title, Tooltip, Legend, ArcElement, ChartDataLabels);
 
 const props = defineProps<{
   labels: string[];
@@ -33,9 +35,25 @@ const chartData = {
 
 const options = {
   responsive: true,
+  cutout: "50%", // controla o tamanho do "buraco" da rosquinha
   plugins: {
-    legend: { position: "right" as const },
-    title: { display: false },
+    legend: {
+      position: "right" as const,
+      labels: {
+        color: "#333",
+        font: {
+          size: 14,
+        },
+      },
+    },
+    datalabels: {
+      color: "#fff",
+      font: {
+        weight: "bold" as const,
+        size: 14,
+      },
+      formatter: (value: number) => value,
+    },
   },
 };
 </script>

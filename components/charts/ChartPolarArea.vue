@@ -12,9 +12,17 @@ import {
   RadialLinearScale,
   ArcElement,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
-// Registrar os componentes necessários
-ChartJS.register(Title, Tooltip, Legend, RadialLinearScale, ArcElement);
+// Registrar os componentes e o plugin
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  RadialLinearScale,
+  ArcElement,
+  ChartDataLabels
+);
 
 // Props para o componente
 const props = defineProps<{
@@ -56,6 +64,14 @@ const options = {
     },
     title: {
       display: false,
+    },
+    datalabels: {
+      color: "#111",
+      font: {
+        weight: "bold" as const,
+        size: 14,
+      },
+      formatter: (value: number) => value,
     },
   },
 };

@@ -13,14 +13,17 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Registrar o plugin de datalabels
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
   CategoryScale,
   LinearScale,
-  BarElement
+  BarElement,
+  ChartDataLabels
 );
 
 // Props esperadas: mesmo formato que o stacked
@@ -60,10 +63,20 @@ const options = {
   plugins: {
     legend: { position: "top" as const },
     title: { display: false },
+    datalabels: {
+      anchor: "end" as const,
+      align: "top" as const,
+      color: "#333",
+      font: {
+        weight: "bold" as const,
+        size: 14,
+      },
+      formatter: (value: number) => value,
+    },
   },
   scales: {
     x: {
-      stacked: false, // ❗ importante: barras agrupadas, não empilhadas
+      stacked: false,
     },
     y: {
       stacked: false,
