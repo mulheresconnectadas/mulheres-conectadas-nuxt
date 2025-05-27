@@ -1,7 +1,7 @@
 export function useExport() {
   async function exportToCsv() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/exportar_inscricoes",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/exportar_inscricoes",
       {
         method: "GET",
         headers: {
@@ -25,7 +25,7 @@ export function useExport() {
 
   async function exportInscritosPorCidade() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/inscricoes/stats/cidade/csv",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/inscricoes/stats/cidade/csv",
       {
         method: "GET",
         headers: {
@@ -49,7 +49,7 @@ export function useExport() {
 
   async function exportInscritosPorSituacaoTrabalho() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/inscricoes/stats/situacao_trabalho/csv",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/inscricoes/stats/situacao_trabalho/csv",
       {
         method: "GET",
         headers: {
@@ -73,7 +73,7 @@ export function useExport() {
 
   async function exportInscritosPorEscolaridade() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/inscricoes/stats/escolaridade/csv",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/inscricoes/stats/escolaridade/csv",
       {
         method: "GET",
         headers: {
@@ -97,7 +97,7 @@ export function useExport() {
 
   async function exportInscritosPorEscolaridadeEEtnia() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/escolaridade_por_etnia/csv",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/escolaridade_por_etnia/csv",
       {
         method: "GET",
         headers: {
@@ -121,7 +121,7 @@ export function useExport() {
 
   async function exportTopCidadesPresenciais() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/presencial_top_cidades/csv",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/presencial_top_cidades/csv",
       {
         method: "GET",
         headers: {

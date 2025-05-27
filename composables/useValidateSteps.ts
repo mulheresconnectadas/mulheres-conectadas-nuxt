@@ -108,7 +108,7 @@ export function useValidateSteps() {
   }
   async function validateEmail(email: string) {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/validar_email",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/validar_email",
       {
         method: "POST",
         body: JSON.stringify({ email }),

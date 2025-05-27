@@ -20,7 +20,7 @@ export function useForm() {
 
   async function submit() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/addUser",
+      "https://back-mulheres-conectadas-a973wtbji.vercel.app/participantes/addUser",
       {
         method: "POST",
         body: JSON.stringify(form.value),

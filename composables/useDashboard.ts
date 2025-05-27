@@ -34,7 +34,7 @@ export function useDashboard() {
 
   async function getStats() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/inscricoes/stats",
+      "https://back-mulheres-conectadas-dusky.vercel.app/participantes/inscricoes/stats",
       {
         method: "GET",
         headers: {
@@ -54,7 +54,7 @@ export function useDashboard() {
 
   async function getEscolaridade() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/escolaridade_por_etnia",
+      "https://back-mulheres-conectadas-dusky.vercel.app/participantes/escolaridade_por_etnia",
       {
         method: "GET",
         headers: {
@@ -72,7 +72,7 @@ export function useDashboard() {
 
   async function getTopCidades() {
     const response = await fetch(
-      "https://back-mulheres-conectadas.vercel.app/participantes/presencial_top_cidades",
+      "https://back-mulheres-conectadas-dusky.vercel.app/participantes/presencial_top_cidades",
       {
         method: "GET",
         headers: {
