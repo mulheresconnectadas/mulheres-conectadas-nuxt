@@ -66,7 +66,7 @@
               <p
                 class="text-sm font-medium text-gray-500 uppercase tracking-wider"
               >
-                Parceiros do projeto
+                Patrocinador do projeto
               </p>
             </div>
 
@@ -82,7 +82,7 @@
                 <img
                   src="/index/logo_index_sudene.png"
                   alt="Logo Sudene"
-                  class="h-20 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+                  class="h-20 object-contain transition-all duration-300 group-hover:scale-105"
                 />
               </NuxtLink>
 
@@ -92,7 +92,7 @@
                 <img
                   src="/index/inova_mulher.png"
                   alt="Logo Inova Mulher"
-                  class="h-30 object-contain filter grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+                  class="h-30 object-contain transition-all duration-300 group-hover:scale-105"
                 />
               </div>
             </div>

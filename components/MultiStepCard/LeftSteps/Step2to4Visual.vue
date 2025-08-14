@@ -9,11 +9,18 @@
             alt="Apoio financeiro"
             class="h-8"
           />
-          <img
-            src="/inscricao/logo-sudene.png"
-            alt="Apoio institucional"
-            class="h-8"
-          />
+          <NuxtLink
+            to="https://www.gov.br/sudene/pt-br"
+            external
+            target="_blank"
+            class="group transition-all duration-300 hover:-translate-y-1"
+          >
+            <img
+              src="/inscricao/logo-sudene.png"
+              alt="Apoio institucional"
+              class="h-8"
+            />
+          </NuxtLink>
         </div>
       </div>
       <div class="flex flex-col items-center space-y-2">

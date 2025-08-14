@@ -10,6 +10,9 @@
     <div class="w-full mx-auto px-4 sm:px-6 md:px-10">
       <MultiStepCard />
     </div>
+    
+    <!-- Seção de Patrocinador -->
+    <IndexSponsor />
   </div>
 </template>
 
