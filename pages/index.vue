@@ -6,6 +6,7 @@
     <IndexSolutions />
     <!-- <IndexNews /> -->
     <IndexLocation />
+    <IndexInfo />
   </div>
 </template>
 
